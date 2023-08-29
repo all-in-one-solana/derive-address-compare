@@ -84,8 +84,11 @@ async function main() {
   const newtransaction = new Transaction().add(
     SystemProgram.transfer({
       fromPubkey: derivedPublicKey,
+      basePubkey: baseAccount.publicKey,
       toPubkey: baseAccount.publicKey,
-      lamports: 10 * 1000_000_000, // 转账金额
+      lamports: 10 * Web3.LAMPORTS_PER_SOL, // 转账金额
+      seed: seed,
+      programId: programId,
     }),
   );
 
